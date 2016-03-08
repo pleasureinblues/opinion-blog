@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}contact Messages{% endblock %}
+
+{% block body_block %}
+    <h1>Feedback Recieved!</h1>
+        {% if fb_message_list %}
+            <table>
+                {% for fbm in fb_message_list %}
+                <tr>
+                    <td>{{ fbm.name }}</td>
+                    <td>{{ fbm.email }}</td>
+                    <td>{{ fbm.subject }}</td>
+                    <td>{{ fbm.message }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+       {% else %}
+            <strong>There are no messages present.</strong>
+       {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Add a new category! {% endblock %}
+{% block body_block %}
+        <h1>Add Your Post Here</h1>
+        <form id="post_form" method="post" action="/blog/add_post/"/>
+            {% csrf_token %}
+            {% for hidden in form1.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form1.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}<br>
+            {% endfor %}
+
+            {% csrf_token %}
+            {% for hidden in form2.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form2.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}<br>
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Submit New Post"/>
+        </form>
+{% endblock %}

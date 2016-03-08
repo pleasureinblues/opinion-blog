@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Category : {{ category.name }}{% endblock %}
+
+{% block body_block %}
+
+    {% if category %}
+    <ul>
+
+        <h2>Category:{{ category.name }}</h2>
+            {% for post in posts %}
+               <h4><a href="/blog/{{post.slug}}"> {{ post.title }}</a></h4>
+                <p> {{ post.body | truncatewords:50  }} <a href="/blog/{{post.slug}}"> Read more...</a></p>
+            {% endfor %}
+    </ul>
+    {% else %}
+    <strong>No such category.</strong>
+    {% endif %}
+
+
+{% endblock %}

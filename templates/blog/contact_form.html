@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body_block %}
+{% block title %}Contact Us{% endblock %}
+
+<div class="container">
+
+        <form id="contact_form" method="post" action="{% url 'blog:contact' %}">
+            <div class="form-group">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+            <p>{{ field }}</p>
+            {% endfor %}
+
+            <input type="submit" class="btn btn-primary" name="submit" value="Submit the Message"/>
+            </div>
+        </form>
+</div>
+
+{% endblock %}

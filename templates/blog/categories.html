@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Categories{% endblock %}
+
+{% block body_block %}
+<div>
+    <h2>Categories</h2>
+    {% if categories %}
+    <ul>
+        {% for category in categories %}
+                <li class="list-group-item"><a href="{% url 'blog:category' category.slug %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <strong>There are no categories present.</strong>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block body_block %}<!-- body Block starts here -->
+<div class="container">
+   <div class="post-preview">
+      {% if post %}
+      <p>
+         <h2>{{ post.title }}</h2>
+         <small>{{ post.category }}</small>
+         <p class="post-meta">{{ post.posted }}</p>
+         <p>{{ post.body }}</p>
+            <hr>
+          <!-- -->
+                   <h4>Tags</h4>
+         {% if tags %}
+         {% for tag in tags %}
+         <span> <a href="{% url 'blog:tag' tag.slug %}"> {{ tag.tag_title }}</a>,</span>
+         {% endfor %}
+         {% else %}
+         <small>Without Tags! </small>
+         {% endif %}
+            <hr>
+          <!-- -->
+
+
+
+         <h4>Comments</h4>
+         {% if comments %}
+         {% for comment in comments %}
+         <h5> {{ comment.commenter | capfirst }}</h5>
+         <p>  {{ comment.comment_body }}</p>
+         <small>{{ comment.commented_on }}</small>
+         <hr>
+         {% endfor %}
+         {% else %}
+         <small>No comments Yet </small>
+
+         {% endif %}
+          <hr>
+          <h4>Add Comment</h4>
+          {% if user.is_authenticated %}
+          {{ user.username | capfirst }} Please Share Your Views!
+          <form action="" method="POST">
+              {% csrf_token %}
+              <table>
+                  {{ form.as_table }}
+              </table>
+              <input type="submit" name="submit" value="Submit"/>
+          </form>
+
+          {% else %}
+          <small>Please <a href="{% url 'auth_login' %}">Login</a> to share your views!</small>
+
+
+          {% endif %}
+
+      </div>
+      <hr>
+      <h4>Add New Tags</h4>
+      {% if user.is_authenticated %}
+      <form action="" method="POST">
+         {% csrf_token %}
+         <table>
+            {{ tagform.as_table }}
+         </table>
+         <input type="submit" name="submit" value="Submit" />
+      </form>
+      {% else %}
+      Please <a href="{% url 'auth_login' %}">Login</a> to add new tags!
+      {% endif %}
+      {% else %}
+      <strong>No such post</strong>
+      {% endif %}
+   </div>
+</div>
+{% endblock %}

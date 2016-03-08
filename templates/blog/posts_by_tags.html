@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Index{% endblock %}
+
+{% block body_block %}
+
+<div class="container">
+
+Showing Posts for : <strong>{{ tag_name | capfirst }}</strong>
+    <br><small>[Back to <a href="{% url 'blog:index' %}">Home Page </a>]</small>
+{% block post %}
+<div class="post-preview">
+    {% if tag_name %}
+
+    {% for post in posts %}
+    <a href="{% url 'blog:blog_post' post.slug %}" class="post-title"><h2>{{ post.title }}</h2></a>
+    <h4>{{ post.category }}</h4>
+
+    <p class="post-meta">{{ post.posted }}</p>
+
+    <p>{{ post.body | truncatewords:50}}<span class="read-more"><a href="{% url 'blog:blog_post' post.slug %}">read more</a></span></a> </span> </p>
+
+    {% endfor %}
+</div>
+{% else %}
+<strong>There are no categories present.</strong>
+<img width="500" height="500" src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>
+{% endif %}
+
+
+{% endblock %}
+</div>
+{% endblock %}
+</div>
