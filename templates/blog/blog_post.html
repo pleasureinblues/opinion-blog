@@ -9,7 +9,7 @@
          <h2>{{ post.title }}</h2>
          <small>{{ post.category }}</small>
          <p class="post-meta">{{ post.posted }}</p>
-         <p>{{ post.body }}</p>
+         <p>{{ post.body | safe }}</p>
             <hr>
           <!-- -->
                    <h4>Tags</h4>

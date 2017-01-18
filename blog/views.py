@@ -69,7 +69,6 @@ def add_post(request):
     if request.method == 'POST':
         form1Post = PostForm(request.POST)
         form2Tags = TagForm(request.POST)
-
         if form1Post.is_valid() and form2Tags.is_valid():
             post = form1Post.save()
             #post_instance_for_tag = post.save()

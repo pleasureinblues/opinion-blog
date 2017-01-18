@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'blog',
     'registration',
+    'tinymce',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -78,11 +80,29 @@ WSGI_APPLICATION = 'opinion.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'opinion',
+        'USER': 'root',
+        'PASSWORD': 'alphaone1',
+        'HOST': 'localhost',
+        'PORT': '',
+        #'OPTIONS': {"init_command": "SET storage_engine=MyISAM"},
     }
 }
 
+#DATABASES = {
+ #   'default': {
+ #       'ENGINE': 'django.db.backends.mysql',
+ #       'NAME': os.path.join(BASE_DIR, 'opinion.cnf'),
+  #  }
+#}
+
+# my.cnf
+#[client]
+#database = opinion
+#user = root
+#password = pipalphaone1
+#default-character-set = utf8
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -111,6 +131,11 @@ STATICFILES_DIRS = (
 
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Absolute path to the media directory
+
+
+
 
 # DJANGO-REGISTRATION-REDUX SETTINGS - STARTS HERE
 
@@ -122,3 +147,21 @@ LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not
                                 # and are trying to access pages requiring authentication
 
 # DJANGO-REGISTRATION-REDUX SETTINGS - ENDS HERE
+
+#TINYMCE
+
+TINYMCE_JS_URL = os.path.join(STATIC_PATH,"django-tinymce-master/tinymce/media/tiny_mce/tiny_mce_src.js")
+
+
+TINYMCE_JS_ROOT = os.path.join(STATIC_PATH, "django-tinymce-master/tinymce")
+
+#D:\Dropbox\dp\p2d18\opinion\static\django-tinymce-master\tinymce
+
+TINYMCE_DEFAULT_CONFIG = {
+'plugins': "table,spellchecker,paste,searchreplace",
+'theme': "advanced",
+'cleanup_on_startup': True,
+'custom_undo_redo_levels': 10,
+}
+TINYMCE_SPELLCHECKER = True
+TINYMCE_COMPRESSOR = True

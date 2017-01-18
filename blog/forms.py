@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from blog.models import Contact, UserProfile, Category, Post, Feedback, LIKE_CHOICES, Comment, Tag
+from tinymce.widgets import TinyMCE
+
 
 class ContactForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Name")
@@ -25,9 +27,9 @@ class CategoryForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
-    title = forms.CharField(max_length=128, help_text="Title")
-    body = forms.CharField(widget=forms.Textarea, help_text="Your Views")
-    category = forms.ModelChoiceField(queryset = Category.objects.all(),help_text="Select Category" )
+    title = forms.CharField(max_length=128)
+    body = forms.CharField(widget=TinyMCE(attrs={'cols': 70, 'rows': 12}))
+    category = forms.ModelChoiceField(queryset = Category.objects.all())
 
     class Meta:
         model = Post

@@ -32,12 +32,12 @@
 
     <p class="post-meta">{{ post.posted }}</p>
 
-    <p>{{ post.body | truncatewords:50}}<span class="read-more"><a href="{% url 'blog:blog_post' post.slug %}">read more</a></span></a> </span> </p>
+    <p>{{ post.body | safe | truncatewords:50 }}<span class="read-more"><a href="{% url 'blog:blog_post' post.slug %}">read more</a></span></a> </span> </p>
 
     {% endfor %}
 </div>
 {% else %}
-<strong>There are no categories present.</strong>
+<strong>There are no post.</strong>
 <img width="500" height="500" src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>
 {% endif %}
 

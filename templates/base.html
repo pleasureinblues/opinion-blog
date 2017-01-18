@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-   <title>Blind Judgement | {% block title %}{% endblock %}</title>
+   <title>Eyeless Verdict | {% block title %}{% endblock %}</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -32,6 +32,9 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="{% static 'django-tinymce-master/tinymce/media/tiny_mce/tiny_mce.js' %}"></script>
+
 
 </head>
 
@@ -112,9 +115,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Blind Judgment </h1>
-                        <hr class="small">
-                        <span class="subheading">A Verdict with Intuition & Insight </span>
+                        <h1>Eyeless Verdict </h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">An Outcome with Intuition & Insight </span>
                     </div>
                 </div>
             </div>
@@ -169,7 +172,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Blind Judgement 2015</p>
+                    <p class="copyright text-muted">Copyright &copy; Blind Judgement 2017</p>
                 </div>
             </div>
         </div>
@@ -177,13 +180,13 @@
 
 {% endblock %}
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/clean-blog.min.js"></script>
+   <!-- <script src="{% static 'js/clean-blog.min.js' %}"></script>-->
 
 
 </body>

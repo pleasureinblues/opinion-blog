@@ -3,6 +3,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
+from tinymce.models import HTMLField
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)

@@ -20,7 +20,7 @@ Showing Posts for : <strong>{{ tag_name | capfirst }}</strong>
 
     <p class="post-meta">{{ post.posted }}</p>
 
-    <p>{{ post.body | truncatewords:50}}<span class="read-more"><a href="{% url 'blog:blog_post' post.slug %}">read more</a></span></a> </span> </p>
+    <p>{{ post.body |safe | truncatewords:50}}<span class="read-more"><a href="{% url 'blog:blog_post' post.slug %}">read more</a></span></a> </span> </p>
 
     {% endfor %}
 </div>

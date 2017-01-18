@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Add a new category! {% endblock %}
+{% block body_block %}
+{{ form1.media }}
+{% load crispy_forms_tags %}
+<div class="col-md-offset-2 col-md-8">
+        <h3>Add Your Post Here</h3>
+        <form id="post_form" method="post" action="/blog/add_post/"/>
+            {% csrf_token %}
+            {% crispy form1 %}
+{% crispy form2 %}
+
+
+
+
+            <input type="submit" name="submit" value="Submit New Post"/>
+        </form>
+    </div>
+<script>
+tinyMCE.init({
+  mode: "textareas",  // to do all text areas
+  // or
+  selector: "#id_myfield",  // change this value according to your HTML
+});
+</script>
+{% endblock %}
